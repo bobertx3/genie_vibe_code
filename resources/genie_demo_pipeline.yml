@@ -1,0 +1,21 @@
+resources:
+  pipelines:
+    genie_demo_pipeline:
+      name: "[${bundle.target}] Genie Demo - Bakehouse Pipeline"
+      catalog: ${var.catalog}
+      target: ${var.schema}
+      libraries:
+        - notebook:
+            path: ../src/01_bronze.sql
+        - notebook:
+            path: ../src/02_silver.sql
+        - notebook:
+            path: ../src/03_gold.sql
+      serverless: true
+      continuous: false
+      development: true
+      photon: true
+      channel: current
+      permissions:
+        - level: CAN_VIEW
+          group_name: "users"

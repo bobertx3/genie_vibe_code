@@ -1,0 +1,25 @@
+bundle:
+  name: genie_demo_pipeline
+
+include:
+  - resources/*.yml
+
+variables:
+  catalog:
+    default: "bx4"
+  schema:
+    default: "genie_demo"
+
+targets:
+  dev:
+    default: true
+    mode: development
+    variables:
+      catalog: "bx4"
+      schema: "genie_demo"
+
+  prod:
+    mode: production
+    variables:
+      catalog: "bx4"
+      schema: "genie_demo"
